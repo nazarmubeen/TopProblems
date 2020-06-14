@@ -24,7 +24,7 @@ public class InsertInterval {
                 newInterval[1]=Math.max(curr[1],newInterval[1]);
             }
         }
-        list.add(index+1,newInterval);
+        list.add(index,newInterval);
 
         return list.toArray(new int[list.size()][2]);
     }
