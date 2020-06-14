@@ -9,11 +9,14 @@ public class InsertInterval {
 
         public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> list=new ArrayList<>();
+        int index=0;
         for(int[] curr:intervals)
         {
             if(curr[0]>newInterval[1] || curr[1]<newInterval[0])
             {
                 list.add(curr);
+                if(curr[0]<newInterval[0])
+                    index++;
             }
             else
             {
@@ -21,10 +24,7 @@ public class InsertInterval {
                 newInterval[1]=Math.max(curr[1],newInterval[1]);
             }
         }
-        list.add(newInterval);
-        list.sort((a,b)->a[0]-b[0]);
-        for(int[] curr:list)
-            System.out.println(curr[0]+" "+curr[1]);
+        list.add(index+1,newInterval);
 
         return list.toArray(new int[list.size()][2]);
     }
